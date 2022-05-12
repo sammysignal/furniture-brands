@@ -6,17 +6,29 @@ import axios from 'axios'
 import Icon from './components/Icon'
 
 function App() {
-  function handlePurchade(e) {
+  function handlePurchase(e) {
     e.preventDefault();
+
     console.log('You clicked submit.');
+
+    axios.post('http://localhost:5000/api', {
+      firstName: 'Fred',
+      lastName: 'Flintstone'
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   }
 
-  const [getMessage, setGetMessage] = useState({})
+  const [getSelectedBrands, setSelectedBrands] = useState({})
 
   useEffect(()=>{
     axios.get('http://localhost:5000/api').then(response => {
       console.log("SUCCESS", response)
-      setGetMessage(response)
     }).catch(error => {
       console.log(error)
     })
@@ -38,10 +50,10 @@ function App() {
     <div className="App">
       <div>
         {logoData.map(logo =>
-          <Icon key={logo.name} name={logo.name} icon={logo.icon}></Icon>
+          <Icon key={logo.name} name={logo.name} icon={logo.icon} selected={true}></Icon>
         )}
       </div>
-      <button onClick={handlePurchade} type="button">Purchase</button>
+      <button onClick={handlePurchase} type="button">Purchase</button>
     </div>
   );
 }

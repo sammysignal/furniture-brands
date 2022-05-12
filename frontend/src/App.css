@@ -1,5 +1,14 @@
 .App {
   text-align: center;
-  color: red;
 }
 
+.brand {
+  display: inline-block;
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+}
+
+.brand.selected {
+  border: 1px solid red;
+}
