@@ -18,6 +18,7 @@ Flask run
 
 Run the react app with:
 
+cd frontend
 npm start
 
 Then visit http://localhost:3000/

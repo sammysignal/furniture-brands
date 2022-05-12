@@ -2,6 +2,7 @@ from flask_restful import Api, Resource, reqparse
 from datetime import datetime
 from .db import addPurchase, getBrandsList
 
+
 def purchaseToReadablePurchase(p):
     return {"time": str(p.get("time")), "brands": p.get("brands")}
 

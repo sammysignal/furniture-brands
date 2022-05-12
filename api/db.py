@@ -1,5 +1,6 @@
 # Save a dictionary into a pickle file.
-import pickle, sys
+import pickle
+import sys
 from datetime import datetime
 from os.path import exists
 
@@ -11,6 +12,8 @@ VALID_BRANDS = ["Design Within Reach", "Restoration Hardware", "West Elm"]
 #     "time": datetime.now()
 #     "brands": ["DWR", "RH"]
 # }
+
+
 def validatePurchase(purchase):
     assert(type(purchase) is dict)
     assert("time" in purchase)
@@ -33,16 +36,16 @@ def addPurchase(purchase):
     db_file_exists = exists(PICKLE_FILE_PATH)
     existingBrandsList = []
     if (db_file_exists):
-        existingBrandsList = pickle.load( open(PICKLE_FILE_PATH, "rb" ) )
+        existingBrandsList = pickle.load(open(PICKLE_FILE_PATH, "rb"))
 
     existingBrandsList.append(purchase)
 
-    pickle.dump( existingBrandsList, open(PICKLE_FILE_PATH, "wb" ) )
+    pickle.dump(existingBrandsList, open(PICKLE_FILE_PATH, "wb"))
 
 
 def getBrandsList():
     db_file_exists = exists(PICKLE_FILE_PATH)
     if (db_file_exists):
-        existingBrandsList = pickle.load( open(PICKLE_FILE_PATH, "rb" ) )
+        existingBrandsList = pickle.load(open(PICKLE_FILE_PATH, "rb"))
         return existingBrandsList
     return []

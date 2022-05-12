@@ -15,7 +15,7 @@
 
 .brand.selected {
   border: 1px solid red;
-  filter: brightness(90%)
+  filter: brightness(90%);
 }
 
 #purchases {
@@ -24,19 +24,24 @@
   width: 100%;
 }
 
-#purchases td, #purchases th {
+#purchases td,
+#purchases th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#purchases tr:nth-child(even){background-color: #f2f2f2;}
+#purchases tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-#purchases tr:hover {background-color: #ddd;}
+#purchases tr:hover {
+  background-color: #ddd;
+}
 
 #purchases th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
 }

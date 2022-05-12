@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
 class PurchaseTable extends Component {
+  brandsList(brandsList) {
+    return brandsList.reduce((previousValue, currentValue) => {
+      return previousValue + currentValue + ", ";
+    }, "");
+  }
+
   render() {
     return (
       <table id='purchases'>
@@ -14,7 +20,7 @@ class PurchaseTable extends Component {
           {this.props.purchases.map((purchase) => (
             <tr key={purchase.time}>
               <td>{purchase.time}</td>
-              <td>{purchase.brands}</td>
+              <td>{this.brandsList(purchase.brands)}</td>
             </tr>
           ))}
         </tbody>
