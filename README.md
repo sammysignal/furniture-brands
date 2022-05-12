@@ -14,12 +14,16 @@ https://flask.palletsprojects.com/en/2.1.x/installation/
 
 Run the server with:
 
+```
 Flask run
+```
 
 Run the react app with:
 
+```
 cd frontend
 npm start
+```
 
 Then visit http://localhost:3000/
 
