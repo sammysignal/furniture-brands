@@ -190,3 +190,8 @@ htmlcov/
 .coverage
 .coverage.*
 *,cover
+
+
+## FOR THIS PROJECT SPECIFICALLY
+
+db.p

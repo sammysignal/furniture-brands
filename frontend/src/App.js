@@ -12,8 +12,7 @@ function App() {
     console.log('You clicked submit.');
 
     axios.post('http://localhost:5000/api', {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
+      brands: ['Design Within Reach']
     })
     .then(function (response) {
       console.log(response);

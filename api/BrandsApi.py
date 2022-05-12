@@ -1,33 +1,37 @@
 from flask_restful import Api, Resource, reqparse
+from datetime import datetime
 from .db import addPurchase, getBrandsList
 
+def purchaseToReadablePurchase(p):
+    return {"time": str(p.get("time")), "brands": p.get("brands")}
+
+
 class BrandsApi(Resource):
-    def purchaseToReadablePurchase(p):
-        return {"time": str(p.get("time")), "brands": p.get("brands")}
 
     # Get existing purchases list
     def get(self):
         # db call
         existingBrandsList = getBrandsList()
 
-        result = list(map(self.purchaseToReadablePurchase, existingBrandsList))
-
-        return getBrandsList()
+        result = list(map(purchaseToReadablePurchase, existingBrandsList))
+        return result
 
     def post(self):
-        print(self)
         parser = reqparse.RequestParser()
-        parser.add_argument('firstName', type=str)
-        parser.add_argument('lastName', type=str)
-
+        parser.add_argument('brands', action='append')
         args = parser.parse_args()
+        brands = args['brands']
+        print("receiving purchase...")
+        print(brands)
 
-        print(args)
-        # note, the post req from frontend needs to match the strings here (e.g. 'type and 'message')
+        purchase = {
+            "time": datetime.now(),
+            "brands": brands
+        }
 
-        firstName = args['firstName']
-        lastName = args['lastName']
+        # db call
+        addPurchase(purchase)
 
-        final_ret = {"status": "Success", "message": firstName + " " + lastName}
+        final_ret = {"status": "Success", "message": str(brands)}
 
         return final_ret
